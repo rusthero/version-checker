@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'jacoco'
     id 'maven-publish'
 }
 
@@ -25,8 +26,16 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
 test {
     useJUnitPlatform()
+    finalizedBy(jacocoTestReport)
 }
 
 tasks.register('sourceJar', Jar) {
