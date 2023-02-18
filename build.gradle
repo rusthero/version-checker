@@ -48,8 +48,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             pom {
-                name = 'Version Tracker'
-                description = 'Simple library which utilizes the GitHub API to check if software is up-to-date.'
+                name = 'Version Checker'
+                description = 'Library to check if software is up-to-date via GitHub API.'
                 url = 'https://github.com/rusthero/version-checker'
                 licenses {
                     license {
