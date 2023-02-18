@@ -1,9 +1,18 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group 'dev.rusthero'
 version '1.0.0'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()
@@ -18,4 +27,34 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register('sourceJar', Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            pom {
+                name = 'Version Tracker'
+                description = 'Simple library which utilizes the GitHub API to check if software is up-to-date.'
+                url = 'https://github.com/rusthero/version-checker'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://github.com/rusthero/version-checker/blob/main/LICENSE'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'rusthero'
+                        name = 'Kara'
+                        email = 'rusthero@pm.me'
+                    }
+                }
+            }
+            from components.java
+        }
+    }
 }
