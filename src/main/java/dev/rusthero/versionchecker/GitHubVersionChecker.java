@@ -1,7 +1,6 @@
 package dev.rusthero.versionchecker;
 
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
@@ -44,35 +43,28 @@ public class GitHubVersionChecker {
      * as a string. Removes the prefix `v` if the tag name starts with one.
      *
      * @return The latest version of the repository as a string without `v` prefix.
-     * @throws ConnectionFailedException If a connection to the GitHub API cannot be established.
-     * @throws ReleaseNotFoundException  If the specified repository or latest release is not found.
-     * @throws InvalidFormatException    If the response from the GitHub API is not in the expected format.
+     * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
+     * @throws IOException                    If an error occurs while retrieving the latest version information from
+     *                                        the API endpoint.
      */
-    public String getLatestVersion() throws ConnectionFailedException, ReleaseNotFoundException,
-            InvalidFormatException {
-        try {
-            HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
-            int responseCode = conn.getResponseCode();
+    public String getLatestVersion() throws ReleaseOrRepoNotFoundException, IOException {
+        HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
+        int responseCode = conn.getResponseCode();
 
-            if (responseCode == 404) {
-                throw new ReleaseNotFoundException(
-                        format("The specified repository is not found at %s", endpoint)
-                );
-            }
+        if (responseCode == 404) {
+            throw new ReleaseOrRepoNotFoundException(
+                    format("The specified repository is not found at %s", endpoint)
+            );
+        }
 
-            // This try-with-resources closes the AutoCloseable reader.
-            try (BufferedReader buf = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
-                JsonElement json = JsonParser.parseReader(buf);
+        // This try-with-resources closes the AutoCloseable reader.
+        try (BufferedReader buf = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+            JsonElement json = JsonParser.parseReader(buf);
 
-                String tagName = json.getAsJsonObject().get("tag_name").getAsString();
-                // Prefix `v` is used on a lot of repos as a version tag prefix. It must be removed to prevent
-                // confusions when comparing versions.
-                return tagName.startsWith("v") ? tagName.substring(1) : tagName;
-            }
-        } catch (IOException e) {
-            throw new ConnectionFailedException(e);
-        } catch (JsonParseException e) {
-            throw new InvalidFormatException("Error parsing JSON response from GitHub API", e);
+            String tagName = json.getAsJsonObject().get("tag_name").getAsString();
+            // Prefix `v` is used on a lot of repos as a version tag prefix. It must be removed to prevent
+            // confusions when comparing versions.
+            return tagName.startsWith("v") ? tagName.substring(1) : tagName;
         }
     }
 
@@ -83,12 +75,11 @@ public class GitHubVersionChecker {
      *
      * @param version The version string to compare with the latest version. It is `v` prefix-insensitive.
      * @return true if the specified version matches the latest version, and false otherwise.
-     * @throws ConnectionFailedException If a connection to the GitHub API cannot be established.
-     * @throws ReleaseNotFoundException  If the specified repository or latest release is not found.
-     * @throws InvalidFormatException    If the response from the GitHub API is not in the expected format.
+     * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
+     * @throws IOException                    If an error occurs while retrieving the latest version information from
+     *                                        the API endpoint.
      */
-    public boolean isLatestVersion(String version)
-            throws ConnectionFailedException, ReleaseNotFoundException, InvalidFormatException {
+    public boolean isLatestVersion(String version) throws ReleaseOrRepoNotFoundException, IOException {
         // Some may put `v` prefix so remove it just in case.
         return (version.startsWith("v") ? version.substring(1) : version).equals(getLatestVersion());
     }

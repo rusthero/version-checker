@@ -1,15 +1,26 @@
 import dev.rusthero.versionchecker.GitHubVersionChecker;
+import dev.rusthero.versionchecker.ReleaseOrRepoNotFoundException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class GitHubVersionCheckerTest {
     @Test
-    public void testGetLatestVersion() throws Exception {
+    public void getLatestVersionFromValidEndpoint() throws Exception {
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
-
         assertEquals("0.1.0", checker.getLatestVersion());
+    }
+
+    @Test
+    public void getLatestVersionFromInvalidEndpoint() throws Exception {
+        GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "this-repo-does-not-exist");
+        assertThrows(ReleaseOrRepoNotFoundException.class, checker::getLatestVersion);
+
+        // Usernames on GitHub cannot be longer than 39 characters so this username cannot exist
+        String impossibleUsername = "a".repeat(48);
+        checker = new GitHubVersionChecker(impossibleUsername, "this-repo-does-not-exist");
+        assertThrows(ReleaseOrRepoNotFoundException.class, checker::getLatestVersion);
     }
 
     @Test
