@@ -2,7 +2,7 @@
 VersionChecker is a library which utilizes the GitHub API to check if software is up-to-date. It reads the tag name for the latest release for comparing or other purposes. For detailed information on GitHub API, see the [documentations](https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release).
 
  <a href="https://github.com/rusthero/version-checker/releases">
-    <img src="https://img.shields.io/github/release/rusthero/version-checker?height=30&color=D0A384&logo=GitHub&logoColor=white">
+    <img src="https://img.shields.io/github/release/rusthero/version-checker?height=30&color=B0A384&logo=GitHub&logoColor=white">
  </a>
 <a href="https://github.com/rusthero/version-checker/actions?query=workflow%3A%22Gradle Build%22">
     <img src="https://img.shields.io/github/actions/workflow/status/rusthero/version-checker/ci.yml?branch=main&color=BEC5C9&logo=GitHub%20Actions&logoColor=BEC5C9"/>
@@ -62,7 +62,7 @@ dependencies {
 </dependencies>
 ```
 #### Manual installation
-You can also install VersionChecker manually by downloading it from [releases](https://github.com/rusthero/version-checker/releases) and adding it to your project as a library.
+You can also install VersionChecker manually by downloading it from [releases](https://github.com/rusthero/version-checker/releases) and adding it to your project.
 
 ## License
 [The MIT License](https://github.com/rusthero/version-checker/blob/main/LICENSE)
