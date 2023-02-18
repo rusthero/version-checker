@@ -34,7 +34,30 @@ public class GitHubVersionChecker {
      * @throws MalformedURLException If the constructed endpoint URL is not a valid URL.
      */
     public GitHubVersionChecker(String owner, String repo) throws MalformedURLException {
-        endpoint = new URL(format("https://api.github.com/repos/%s/%s/releases/latest", owner, repo));
+        this(format("https://api.github.com/repos/%s/%s/releases/latest", owner, repo));
+    }
+
+    /**
+     * Constructs a new instance of the GitHubVersionChecker class with the specified API endpoint URL. The
+     * constructor creates a new URL object using the provided endpoint value, and sets it as the endpoint for the
+     * GitHubVersionChecker instance.
+     *
+     * @param endpoint The URL of the endpoint to use for retrieving the latest version information from the GitHub API.
+     * @throws MalformedURLException If the constructed endpoint URL is not a valid URL.
+     */
+    public GitHubVersionChecker(String endpoint) throws MalformedURLException {
+        this.endpoint = new URL(endpoint);
+    }
+
+    /**
+     * Constructs a new instance of the GitHubVersionChecker class with the specified API endpoint URL. The
+     * constructor sets the provided URL object as the endpoint for the GitHubVersionChecker instance.
+     *
+     * @param endpoint The URL object representing the endpoint to use for retrieving the latest version information
+     *                 from the GitHub API.
+     */
+    public GitHubVersionChecker(URL endpoint) {
+        this.endpoint = endpoint;
     }
 
     /**

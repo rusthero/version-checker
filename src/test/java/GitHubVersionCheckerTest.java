@@ -1,8 +1,14 @@
 import dev.rusthero.versionchecker.GitHubVersionChecker;
+import dev.rusthero.versionchecker.RateLimitExceededException;
 import dev.rusthero.versionchecker.ReleaseOrRepoNotFoundException;
 import org.junit.jupiter.api.Test;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 public class GitHubVersionCheckerTest {
@@ -26,6 +32,19 @@ public class GitHubVersionCheckerTest {
         String impossibleUsername = "a".repeat(48);
         checker = new GitHubVersionChecker(impossibleUsername, "this-repo-does-not-exist");
         assertThrows(ReleaseOrRepoNotFoundException.class, checker::getLatestVersion);
+    }
+
+    @Test
+    public void getLatestVersionWith403StatusCode() throws Exception {
+        HttpURLConnection mockConn = mock(HttpURLConnection.class);
+        when(mockConn.getResponseCode()).thenReturn(403);
+
+        URL mockUrl = mock(URL.class);
+        when(mockUrl.openConnection()).thenReturn(mockConn);
+
+        GitHubVersionChecker checker = new GitHubVersionChecker(mockUrl);
+
+        assertThrows(RateLimitExceededException.class, checker::getLatestVersion);
     }
 
     @Test
