@@ -8,8 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GitHubVersionCheckerTest {
     @Test
     public void getLatestVersionFromValidEndpoint() throws Exception {
-        GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
-        assertEquals("0.1.0", checker.getLatestVersion());
+        // This repository has a version with v1.0.0 tag
+        GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "version-with-v-prefix");
+        assertEquals("1.0.0", checker.getLatestVersion());
+
+        // This repository has a version with 1.0.0 tag
+        checker = new GitHubVersionChecker("rusthero", "version-without-v-prefix");
+        assertEquals("1.0.0", checker.getLatestVersion());
     }
 
     @Test
