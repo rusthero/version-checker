@@ -63,7 +63,7 @@ dependencies {
 </dependencies>
 ```
 #### Manual installation
-You can also install VersionChecker manually by installing from [releases](https://github.com/rusthero/version-checker/releases) and adding it to your project as a library.
+You can also install VersionChecker manually by downloading it from [releases](https://github.com/rusthero/version-checker/releases) and adding it to your project as a library.
 
 ## License
 [The MIT License](https://github.com/rusthero/version-checker/blob/main/LICENSE)
