@@ -43,15 +43,21 @@ public class GitHubVersionChecker {
      * as a string. Removes the prefix `v` if the tag name starts with one.
      *
      * @return The latest version of the repository as a string without `v` prefix.
+     * @throws RateLimitExceededException     Thrown to indicate that the rate limit for the GitHub API has been
+     *                                        reached or exceeded.
      * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
      * @throws IOException                    If an error occurs while retrieving the latest version information from
      *                                        the API endpoint.
      */
-    public String getLatestVersion() throws ReleaseOrRepoNotFoundException, IOException {
+    public String getLatestVersion() throws RateLimitExceededException, ReleaseOrRepoNotFoundException, IOException {
         HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
         int responseCode = conn.getResponseCode();
 
-        if (responseCode == 404) {
+        if (responseCode == 403) {
+            throw new RateLimitExceededException(
+                    "API rate limit has been exceeded. Please try again later or increase your rate limit quota"
+            );
+        } else if (responseCode == 404) {
             throw new ReleaseOrRepoNotFoundException(
                     format("The specified repository is not found at %s", endpoint)
             );
@@ -75,11 +81,14 @@ public class GitHubVersionChecker {
      *
      * @param version The version string to compare with the latest version. It is `v` prefix-insensitive.
      * @return true if the specified version matches the latest version, and false otherwise.
+     * @throws RateLimitExceededException     Thrown to indicate that the rate limit for the GitHub API has been reached
+     *                                        or exceeded.
      * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
      * @throws IOException                    If an error occurs while retrieving the latest version information from
      *                                        the API endpoint.
      */
-    public boolean isLatestVersion(String version) throws ReleaseOrRepoNotFoundException, IOException {
+    public boolean isLatestVersion(String version) throws RateLimitExceededException, ReleaseOrRepoNotFoundException,
+            IOException {
         // Some may put `v` prefix so remove it just in case.
         return (version.startsWith("v") ? version.substring(1) : version).equals(getLatestVersion());
     }

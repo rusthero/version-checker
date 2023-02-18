@@ -30,9 +30,9 @@ public class GitHubVersionCheckerTest {
 
     @Test
     public void testIsLatestVersion() throws Exception {
-        GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
+        GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "version-with-v-prefix");
 
-        assertTrue(checker.isLatestVersion("v0.1.0"));
-        assertTrue(checker.isLatestVersion("0.1.0"));
+        assertTrue(checker.isLatestVersion("v1.0.0"));
+        assertTrue(checker.isLatestVersion("1.0.0"));
     }
 }
