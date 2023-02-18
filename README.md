@@ -21,7 +21,7 @@ VersionChecker is a library which utilizes the GitHub API to check if software i
 </a>
 
 ## Example
-We can easily get the version for latest release of this repository `version-checker` owned by me `rusthero`.
+We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
 ```Java
 public static void main(String[] args) throws MalformedURLException, ReleaseNotFoundException, ConnectionFailedException, InvalidFormatException {
     GitHubVersionChecker versionChecker = new GitHubVersionChecker("rusthero", "version-checker");
