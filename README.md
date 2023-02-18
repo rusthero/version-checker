@@ -30,7 +30,7 @@ public static void main(String[] args) throws MalformedURLException, ReleaseNotF
 ```
 There is also a method to compare versions: [GitHubVersionChecker#isLatestVersion(String)](https://rusthero.dev/javadocs/version-checker/dev/rusthero/versionchecker/GitHubVersionChecker.html#isLatestVersion(java.lang.String))
 
-## Using VersionChecker
+## Artifacts
 To use VersionChecker, add my Maven repository and install it as a dependency.
 ### Gradle
 ```Gradle
