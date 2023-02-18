@@ -46,7 +46,7 @@ public class GitHubVersionChecker {
      * @throws MalformedURLException If the constructed endpoint URL is not a valid URL.
      */
     public GitHubVersionChecker(String endpoint) throws MalformedURLException {
-        this.endpoint = new URL(endpoint);
+        this(new URL(endpoint));
     }
 
     /**
