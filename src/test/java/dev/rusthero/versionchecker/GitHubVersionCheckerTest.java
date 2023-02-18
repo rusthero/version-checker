@@ -1,3 +1,5 @@
+package dev.rusthero.versionchecker;
+
 import dev.rusthero.versionchecker.GitHubVersionChecker;
 import dev.rusthero.versionchecker.RateLimitExceededException;
 import dev.rusthero.versionchecker.ReleaseOrRepoNotFoundException;
