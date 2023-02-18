@@ -14,7 +14,7 @@ VersionChecker is a library which utilizes the GitHub API to check if software i
     <img src="https://www.codefactor.io/repository/github/rusthero/version-checker/badge" alt="CodeFactor"/>
 </a>
 <a href ="https://rusthero.dev/javadocs/version-checker">
-  <img src="https://img.shields.io/badge/javadoc-1.0.0-green"/>
+  <img src="https://img.shields.io/badge/javadoc-v1.0.0-green"/>
 </a>
 <a href="https://discord.gg/5C6JgvmwUe">
     <img src="https://img.shields.io/discord/1051165269709557813.svg?style=flat&color=7289DA&logo=Discord" alt="Discord"/>
