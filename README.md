@@ -1,5 +1,5 @@
 # VersionChecker
-Simple library which utilizes the GitHub API to check if software is up-to-date. This library reads the tag name for the latest release for comparing or other purposes. For detailed information on GitHub API, see the [documentations](https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release).
+VersionChecker is a library which utilizes the GitHub API to check if software is up-to-date. This library reads the tag name for the latest release for comparing or other purposes. For detailed information on GitHub API, see the [documentations](https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release).
 
  <a href="https://github.com/rusthero/version-checker/releases">
     <img src="https://img.shields.io/github/release/rusthero/version-checker?height=30&color=D0A384&logo=GitHub&logoColor=white">
