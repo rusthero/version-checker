@@ -43,8 +43,10 @@ public class GitHubVersionChecker {
      * request to the GitHub API endpoint and retrieves the latest version information, which is returned
      * as a string. Removes the prefix `v` if the tag name starts with one.
      *
-     * @return The latest version of the repository as a string.
-     * @throws RuntimeException If there is an error retrieving the latest version from the GitHub API.
+     * @return The latest version of the repository as a string without `v` prefix.
+     * @throws ConnectionFailedException If a connection to the GitHub API cannot be established.
+     * @throws ReleaseNotFoundException  If the specified repository or latest release is not found.
+     * @throws InvalidFormatException    If the response from the GitHub API is not in the expected format.
      */
     public String getLatestVersion() throws ConnectionFailedException, ReleaseNotFoundException,
             InvalidFormatException {
@@ -81,7 +83,9 @@ public class GitHubVersionChecker {
      *
      * @param version The version string to compare with the latest version. It is `v` prefix-insensitive.
      * @return true if the specified version matches the latest version, and false otherwise.
-     * @throws RuntimeException If there is an error retrieving the latest version from the GitHub API.
+     * @throws ConnectionFailedException If a connection to the GitHub API cannot be established.
+     * @throws ReleaseNotFoundException  If the specified repository or latest release is not found.
+     * @throws InvalidFormatException    If the response from the GitHub API is not in the expected format.
      */
     public boolean isLatestVersion(String version)
             throws ConnectionFailedException, ReleaseNotFoundException, InvalidFormatException {
