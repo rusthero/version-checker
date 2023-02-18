@@ -35,7 +35,6 @@ To use VersionChecker, add my repository and the dependency.
 ### Gradle
 ```Gradle
 repositories {
-    mavenCentral()
     maven {
         url "https://rusthero.dev"
     }
