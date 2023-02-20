@@ -55,13 +55,15 @@
 We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
 ```Java
 public static void main(String[] args) throws IOException, ReleaseOrRepoNotFoundException, RateLimitExceededException {
+    Version currentVersion = new Version("1.1.0");
+
     GitHubVersionChecker versionChecker = new GitHubVersionChecker("rusthero", "version-checker");
-    Version currentVersion = new Version("1.1.0");    
-    
-    versionChecker.ifOutdatedVersion(currentVersion, version -> System.out.println("README file is outdated!"));
+    if (!versionChecker.isLatestVersion(currentVersion)) {
+        System.out.println("README file is outdated!");
+    }
 }
 ```
-See [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) and [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) for more information on how to use Version Checker.
+See [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) and [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) for learning about other methods and functionality.
 
 ## Artifacts
 To use Version Checker, add my repository and the dependency.
