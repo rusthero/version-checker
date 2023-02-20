@@ -1,27 +1,42 @@
-# VersionChecker
+<h1 align="center">
+    <img src="https://user-images.githubusercontent.com/120267985/220111469-ba5b7bcb-6791-4f2e-b25f-f5523d6512f3.png" width=50%/>
+    <br>
+    Version Checker   
+</h1>
 
-<a href="https://github.com/rusthero/version-checker/releases">
-    <img src="https://img.shields.io/github/release/rusthero/version-checker?height=30&color=B0A384&logo=GitHub&logoColor=white">
-</a>
-<a href ="https://rusthero.dev/javadocs/version-checker">
-    <img src="https://img.shields.io/badge/javadoc-v1.0.0-green"/>
-</a>
-<a href="https://github.com/rusthero/version-checker/actions?query=workflow%3A%22Gradle Build%22">
-    <img src="https://img.shields.io/github/actions/workflow/status/rusthero/version-checker/ci.yml?branch=main&color=BEC5C9&logo=GitHub%20Actions&logoColor=BEC5C9"/>
-</a>
-<a href="https://codecov.io/gh/rusthero/version-checker">
-    <img src="https://codecov.io/gh/rusthero/version-checker/branch/main/graph/badge.svg?token=QJY7QSO3GC"/>
-</a>
-<a href="https://www.codefactor.io/repository/github/rusthero/version-checker">
-    <img src="https://www.codefactor.io/repository/github/rusthero/version-checker/badge" alt="CodeFactor"/>
-</a>
-<a href="https://discord.gg/5C6JgvmwUe">
-    <img src="https://img.shields.io/discord/1051165269709557813.svg?style=flat&color=7289DA&logo=Discord" alt="Discord"/>
-</a>
+<h4 align="center">
+    Java library to check if software is up-to-date or outdated via GitHub API.          
+</h2>
+
+<p align="center">
+    <a href="https://github.com/rusthero/version-checker/releases">
+        <img src="https://img.shields.io/github/release/rusthero/version-checker?height=30&color=B0A384&logo=GitHub&logoColor=white">
+    </a>
+    <a href="https://opensource.org/licenses/MIT)">
+        <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
+    </a>     
+    <a href ="https://rusthero.dev/javadocs/version-checker/1.0.0">
+        <img src="https://img.shields.io/badge/javadoc-v1.0.0-green"/>
+    </a>
+    <a href="https://codecov.io/gh/rusthero/version-checker">
+        <img src="https://codecov.io/gh/rusthero/version-checker/branch/main/graph/badge.svg?token=QJY7QSO3GC"/>
+    </a>
+    <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=bugs"/>
+    </a>
+        <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=vulnerabilities"/>
+    </a>
+    </a>
+        <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=code_smells"/>
+    </a>
+    <a href="https://discord.gg/5C6JgvmwUe">
+        <img src="https://img.shields.io/discord/1051165269709557813.svg?style=flat&color=7289DA&logo=Discord" alt="Discord"/>
+    </a>
+</p>  
 
 <br>
-
-VersionChecker is a library which utilizes the GitHub API to check if software is up-to-date. It reads the tag name for the latest release for comparing or other purposes. For detailed information on GitHub API, see the [documentations](https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release).
 
 ## Example
 We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
@@ -66,6 +81,3 @@ dependencies {
 ```
 #### Manual installation
 You can also install VersionChecker manually by downloading it from [releases](https://github.com/rusthero/version-checker/releases) and adding it to your project.
-
-## License
-[The MIT License](https://github.com/rusthero/version-checker/blob/main/LICENSE)
