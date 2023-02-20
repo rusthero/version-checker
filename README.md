@@ -22,6 +22,15 @@
         <img src="https://codecov.io/gh/rusthero/version-checker/branch/main/graph/badge.svg?token=QJY7QSO3GC"/>
     </a>
     <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=reliability_rating"/>
+    </a>
+    <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=security_rating"/>
+    </a>
+    <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=sqale_rating"/>
+    </a>
+    <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=bugs"/>
     </a>
         <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
@@ -30,6 +39,10 @@
     </a>
         <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=code_smells"/>
+    </a>
+    </a>
+        <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=duplicated_lines_density"/>
     </a>
     <a href="https://discord.gg/5C6JgvmwUe">
         <img src="https://img.shields.io/discord/1051165269709557813.svg?style=flat&color=7289DA&logo=Discord" alt="Discord"/>
