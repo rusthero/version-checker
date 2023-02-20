@@ -8,4 +8,4 @@
 
 ## Reporting a Vulnerability
 
-Please create an issue on [issues](https://github.com/rusthero/version-checker/issues) pages to report a vulnerability.
+Go to [Security Advisories](https://github.com/rusthero/version-checker/security/advisories) page to report a vulnerability.
