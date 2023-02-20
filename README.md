@@ -51,7 +51,7 @@
 
 <br>
 
-## Example
+## Usage
 We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
 ```Java
 public static void main(String[] args) throws IOException, ReleaseOrRepoNotFoundException, RateLimitExceededException {
@@ -61,7 +61,7 @@ public static void main(String[] args) throws IOException, ReleaseOrRepoNotFound
     versionChecker.ifOutdatedVersion(currentVersion, version -> System.out.println("README file is outdated!"));
 }
 ```
-Check [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) or [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) for more information on how to use Version Checker.
+See [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) and [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) for more information on how to use Version Checker.
 
 ## Artifacts
 To use Version Checker, add my repository and the dependency.
