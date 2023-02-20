@@ -45,7 +45,7 @@ class GitHubVersionCheckerTest {
 
     @Test
     void testIsLatestVersion() throws Exception {
-        // This repository has a version with v1.0.0 tag name.
+        // This repository has a version with v0.1.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
         assertTrue(checker.isLatestVersion(new Version("0.1.0")));
     }
