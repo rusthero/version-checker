@@ -51,7 +51,6 @@ public final class Version {
         return tagName.equals(inputTagName);
     }
 
-
     /**
      * Returns a hash code value for the Version object, based on the hash code of its tag name.
      *

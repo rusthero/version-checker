@@ -7,7 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class VersionTest {
     @Test
-    public void equals() {
+    public void testToString() {
+        assertEquals("1.0.0", new Version("1.0.0").toString());
+        assertEquals("1.0.0", new Version("v1.0.0").toString());
+        assertEquals("1.0.0-alpha", new Version("1.0.0-ALPHA").toString());
+    }
+
+    @Test
+    public void testEquals() {
         assertEquals((new Version("1.0.0")), new Version("1.0.0"));
         assertEquals((new Version("1.0.0")), new Version("v1.0.0"));
         assertEquals((new Version("1.0.0-Alpha")), new Version("1.0.0-ALPHA"));
@@ -18,14 +25,15 @@ public class VersionTest {
         assertNotEquals(new Version("1.0.0"), new Version("0.9.0"));
         assertNotEquals(new Version("1.0.0"), new Version("v0.9.0"));
         assertNotEquals(new Version("1.0.0"), new Version("v0.9.0-ALPHA"));
-        
+
+        // They shall not be equal because not same type.
         assertNotEquals("1.0.0", new Version("1.0.0"));
         assertNotEquals("1.0.0", new Version("v1.0.0"));
         assertNotEquals(100, new Version("1.0.0"));
     }
 
     @Test
-    public void hash() {
+    public void testHashCode() {
         assertEquals((new Version("1.0.0")).hashCode(), new Version("1.0.0").hashCode());
         assertEquals((new Version("1.0.0")).hashCode(), new Version("v1.0.0").hashCode());
         assertEquals((new Version("1.0.0-Alpha")).hashCode(), new Version("1.0.0-ALPHA").hashCode());
