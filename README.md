@@ -12,7 +12,7 @@
     <a href="https://github.com/rusthero/version-checker/releases">
         <img src="https://img.shields.io/github/release/rusthero/version-checker?height=30&color=B0A384&logo=GitHub&logoColor=white">
     </a>
-    <a href="https://opensource.org/licenses/MIT)">
+    <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
     </a>     
     <a href="https://rusthero.dev/javadocs/version-checker/1.1.0">
