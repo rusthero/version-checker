@@ -14,9 +14,9 @@ import static org.mockito.Mockito.when;
 public class GitHubVersionCheckerTest {
     @Test
     public void getLatestVersionFromValidEndpoint() throws Exception {
-        // This repository has a version with v1.0.0 tag name.
+        // This repository has a version with v0.1.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
-        assertEquals("1.0.0", checker.getLatestVersion().toString());
+        assertEquals("0.1.0", checker.getLatestVersion().toString());
     }
 
     @Test
@@ -47,20 +47,20 @@ public class GitHubVersionCheckerTest {
     public void testIsLatestVersion() throws Exception {
         // This repository has a version with v1.0.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
-        assertTrue(checker.isLatestVersion(new Version("1.0.0")));
+        assertTrue(checker.isLatestVersion(new Version("0.1.0")));
     }
 
     @Test
     public void testIfOutdatedVersion() throws Exception {
-        // This repository has a version with v1.0.0 tag name.
+        // This repository has a version with v0.1.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
 
-        // 1.0.0 is the latest version for the specified repo so consumer is not going to be called.
-        checker.ifOutdatedVersion(new Version("1.0.0"), version -> fail());
+        // 0.1.0 is the latest version for the specified repo so consumer is not going to be called.
+        checker.ifOutdatedVersion(new Version("0.1.0"), version -> fail());
 
-        // 1.0.0 is the latest version for the specified repo so consumer is going to be called.
+        // 0.1.0 is the latest version for the specified repo so consumer is going to be called.
         AtomicBoolean isOutdated = new AtomicBoolean(false);
-        checker.ifOutdatedVersion(new Version("0.1.0"), version -> isOutdated.set(true));
+        checker.ifOutdatedVersion(new Version("0.0.0"), version -> isOutdated.set(true));
         assertTrue(isOutdated.get());
     }
 }

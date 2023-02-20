@@ -1,11 +1,12 @@
 plugins {
     id 'java-library'
     id 'jacoco'
+    id "org.sonarqube" version "4.0.0.2929"
     id 'maven-publish'
 }
 
 group 'dev.rusthero'
-version '1.0.0'
+version '1.1.0'
 
 sourceCompatibility = 17
 targetCompatibility = 17
