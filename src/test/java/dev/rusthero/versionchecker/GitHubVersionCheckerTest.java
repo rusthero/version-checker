@@ -11,16 +11,16 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
-public class GitHubVersionCheckerTest {
+class GitHubVersionCheckerTest {
     @Test
-    public void getLatestVersionFromValidEndpoint() throws Exception {
+    void getLatestVersionFromValidEndpoint() throws Exception {
         // This repository has a version with v0.1.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
         assertEquals("0.1.0", checker.getLatestVersion().toString());
     }
 
     @Test
-    public void getLatestVersionFromInvalidEndpoint() throws Exception {
+    void getLatestVersionFromInvalidEndpoint() throws Exception {
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "this-repo-does-not-exist");
         assertThrows(ReleaseOrRepoNotFoundException.class, checker::getLatestVersion);
 
@@ -31,7 +31,7 @@ public class GitHubVersionCheckerTest {
     }
 
     @Test
-    public void getLatestVersionWith403StatusCode() throws Exception {
+    void getLatestVersionWith403StatusCode() throws Exception {
         HttpURLConnection mockConn = mock(HttpURLConnection.class);
         when(mockConn.getResponseCode()).thenReturn(403);
 
@@ -44,14 +44,14 @@ public class GitHubVersionCheckerTest {
     }
 
     @Test
-    public void testIsLatestVersion() throws Exception {
+    void testIsLatestVersion() throws Exception {
         // This repository has a version with v1.0.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
         assertTrue(checker.isLatestVersion(new Version("0.1.0")));
     }
 
     @Test
-    public void testIfOutdatedVersion() throws Exception {
+    void testIfOutdatedVersion() throws Exception {
         // This repository has a version with v0.1.0 tag name.
         GitHubVersionChecker checker = new GitHubVersionChecker("rusthero", "rusthero");
 

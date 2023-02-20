@@ -5,16 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class VersionTest {
+class VersionTest {
     @Test
-    public void testToString() {
+    void testToString() {
         assertEquals("1.0.0", new Version("1.0.0").toString());
         assertEquals("1.0.0", new Version("v1.0.0").toString());
         assertEquals("1.0.0-alpha", new Version("1.0.0-ALPHA").toString());
     }
 
     @Test
-    public void testEquals() {
+    void testEquals() {
         assertEquals((new Version("1.0.0")), new Version("1.0.0"));
         assertEquals((new Version("1.0.0")), new Version("v1.0.0"));
         assertEquals((new Version("1.0.0-Alpha")), new Version("1.0.0-ALPHA"));
@@ -33,7 +33,7 @@ public class VersionTest {
     }
 
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         assertEquals((new Version("1.0.0")).hashCode(), new Version("1.0.0").hashCode());
         assertEquals((new Version("1.0.0")).hashCode(), new Version("v1.0.0").hashCode());
         assertEquals((new Version("1.0.0-Alpha")).hashCode(), new Version("1.0.0-ALPHA").hashCode());
