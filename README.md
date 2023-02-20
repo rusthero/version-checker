@@ -63,7 +63,7 @@ public static void main(String[] args) throws IOException, ReleaseOrRepoNotFound
     }
 }
 ```
-See [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) and [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) for learning about other methods and functionality.
+See [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) and [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) for learning about other methods and functionality.
 
 ## Artifacts
 To use Version Checker, add my repository and the dependency.
