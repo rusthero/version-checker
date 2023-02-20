@@ -15,8 +15,8 @@
     <a href="https://opensource.org/licenses/MIT)">
         <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
     </a>     
-    <a href ="https://rusthero.dev/javadocs/version-checker/1.0.0">
-        <img src="https://img.shields.io/badge/javadoc-v1.0.0-green"/>
+    <a href="https://rusthero.dev/javadocs/version-checker/1.1.0">
+        <img src="https://img.shields.io/badge/javadoc-v1.1.0-green"/>
     </a>
     <a href="https://codecov.io/gh/rusthero/version-checker">
         <img src="https://codecov.io/gh/rusthero/version-checker/branch/main/graph/badge.svg?token=QJY7QSO3GC"/>
@@ -55,24 +55,27 @@
 We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
 ```Java
 public static void main(String[] args) throws IOException, ReleaseOrRepoNotFoundException, RateLimitExceededException {
+    Version currentVersion = new Version("1.1.0");
+
     GitHubVersionChecker versionChecker = new GitHubVersionChecker("rusthero", "version-checker");
-    String version = versionChecker.getLatestVersion();
+    versionChecker.ifOutdatedVersion(currentVersion, version -> System.out.println("README file is outdated!"));
 }
 ```
-There is also a method to compare versions: [GitHubVersionChecker#isLatestVersion(String)](https://rusthero.dev/javadocs/version-checker/dev/rusthero/versionchecker/GitHubVersionChecker.html#isLatestVersion(java.lang.String))
+Check [tests](https://github.com/rusthero/version-checker/tree/main/src/test/java/dev/rusthero/versionchecker) or [JavaDoc](https://rusthero.dev/javadocs/version-checker/1.1.0) for more information on how to use Version Checker.
 
 ## Artifacts
-To use VersionChecker, add my repository and the dependency.
+To use Version Checker, add my repository and the dependency.
 ### Gradle
 ```Gradle
 repositories {
+    mavenCentral()
     maven {
         url "https://rusthero.dev"
     }
 }
 
 dependencies {
-    implementation 'dev.rusthero:version-checker:1.0.0'   
+    implementation 'dev.rusthero:version-checker:1.1.0'   
 }
 ```
 ### Maven
@@ -88,7 +91,7 @@ dependencies {
     <dependency>
         <groupId>dev.rusthero</groupId>
         <artifactId>version-checker</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 </dependencies>
 ```
