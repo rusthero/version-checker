@@ -55,9 +55,9 @@
 We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
 ```Java
 public static void main(String[] args) throws IOException, ReleaseOrRepoNotFoundException, RateLimitExceededException {
-    Version currentVersion = new Version("1.1.0");
-
     GitHubVersionChecker versionChecker = new GitHubVersionChecker("rusthero", "version-checker");
+    Version currentVersion = new Version("1.1.0");    
+    
     versionChecker.ifOutdatedVersion(currentVersion, version -> System.out.println("README file is outdated!"));
 }
 ```
