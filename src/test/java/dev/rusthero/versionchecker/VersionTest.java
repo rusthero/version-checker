@@ -2,8 +2,7 @@ package dev.rusthero.versionchecker;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class VersionTest {
     @Test
@@ -27,9 +26,7 @@ class VersionTest {
         assertNotEquals(new Version("1.0.0"), new Version("v0.9.0-ALPHA"));
 
         // They shall not be equal because not same type.
-        assertNotEquals("1.0.0", new Version("1.0.0"));
-        assertNotEquals("1.0.0", new Version("v1.0.0"));
-        assertNotEquals(100, new Version("1.0.0"));
+        if (new Version("1.0.0").equals(100)) fail();
     }
 
     @Test
