@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.function.Consumer;
 
 import static java.lang.String.format;
 
@@ -33,7 +34,7 @@ public class GitHubVersionChecker {
      * @param repo  The name of the repository to check.
      * @throws MalformedURLException If the constructed endpoint URL is not a valid URL.
      */
-    public GitHubVersionChecker(String owner, String repo) throws MalformedURLException {
+    public GitHubVersionChecker(final String owner, final String repo) throws MalformedURLException {
         this(format("https://api.github.com/repos/%s/%s/releases/latest", owner, repo));
     }
 
@@ -45,7 +46,7 @@ public class GitHubVersionChecker {
      * @param endpoint The URL of the endpoint to use for retrieving the latest version information from the GitHub API.
      * @throws MalformedURLException If the constructed endpoint URL is not a valid URL.
      */
-    public GitHubVersionChecker(String endpoint) throws MalformedURLException {
+    public GitHubVersionChecker(final String endpoint) throws MalformedURLException {
         this(new URL(endpoint));
     }
 
@@ -56,23 +57,22 @@ public class GitHubVersionChecker {
      * @param endpoint The URL object representing the endpoint to use for retrieving the latest version information
      *                 from the GitHub API.
      */
-    public GitHubVersionChecker(URL endpoint) {
+    public GitHubVersionChecker(final URL endpoint) {
         this.endpoint = endpoint;
     }
 
     /**
      * Returns the latest version of the repository according to the GitHub API. This method sends an HTTP
-     * request to the GitHub API endpoint and retrieves the latest version information, which is returned
-     * as a string. Removes the prefix `v` if the tag name starts with one.
+     * request to the GitHub API endpoint and retrieves the latest version information.
      *
-     * @return The latest version of the repository as a string without `v` prefix.
+     * @return The latest version of the repository.
      * @throws RateLimitExceededException     Thrown to indicate that the rate limit for the GitHub API has been
      *                                        reached or exceeded.
      * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
      * @throws IOException                    If an error occurs while retrieving the latest version information from
      *                                        the API endpoint.
      */
-    public String getLatestVersion() throws RateLimitExceededException, ReleaseOrRepoNotFoundException, IOException {
+    public Version getLatestVersion() throws RateLimitExceededException, ReleaseOrRepoNotFoundException, IOException {
         HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
         int responseCode = conn.getResponseCode();
 
@@ -89,11 +89,7 @@ public class GitHubVersionChecker {
         // This try-with-resources closes the AutoCloseable reader.
         try (BufferedReader buf = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
             JsonElement json = JsonParser.parseReader(buf);
-
-            String tagName = json.getAsJsonObject().get("tag_name").getAsString();
-            // Prefix `v` is used on a lot of repos as a version tag prefix. It must be removed to prevent
-            // confusions when comparing versions.
-            return tagName.startsWith("v") ? tagName.substring(1) : tagName;
+            return new Version(json.getAsJsonObject().get("tag_name").getAsString());
         }
     }
 
@@ -102,17 +98,33 @@ public class GitHubVersionChecker {
      * according to the GitHub API. Returns true if the specified version matches the latest version,
      * and false otherwise.
      *
-     * @param version The version string to compare with the latest version. It is `v` prefix-insensitive.
-     * @return true if the specified version matches the latest version, and false otherwise.
+     * @param version The version to be compared with the latest version.
+     * @return True if the specified version matches the latest version, and false otherwise.
      * @throws RateLimitExceededException     Thrown to indicate that the rate limit for the GitHub API has been reached
      *                                        or exceeded.
      * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
      * @throws IOException                    If an error occurs while retrieving the latest version information from
      *                                        the API endpoint.
      */
-    public boolean isLatestVersion(String version) throws RateLimitExceededException, ReleaseOrRepoNotFoundException,
-            IOException {
-        // Some may put `v` prefix so remove it just in case.
-        return (version.startsWith("v") ? version.substring(1) : version).equals(getLatestVersion());
+    public boolean isLatestVersion(final Version version)
+            throws RateLimitExceededException, ReleaseOrRepoNotFoundException, IOException {
+        return (version.equals(getLatestVersion()));
+    }
+
+    /**
+     * Executes a provided consumer function if the specified version is outdated.
+     *
+     * @param version               The version to be compared with the latest version.
+     * @param latestVersionConsumer The consumer function to be executed if the specified version is outdated.
+     * @throws RateLimitExceededException     Thrown to indicate that the rate limit for the GitHub API has been
+     *                                        reached or exceeded.
+     * @throws ReleaseOrRepoNotFoundException If the specified repository or latest release is not found.
+     * @throws IOException                    If an error occurs while retrieving the latest version information from
+     *                                        the API endpoint.
+     */
+    public void ifOutdatedVersion(final Version version, final Consumer<Version> latestVersionConsumer)
+            throws ReleaseOrRepoNotFoundException, RateLimitExceededException, IOException {
+        final Version latestVersion = getLatestVersion();
+        if (!version.equals(latestVersion)) latestVersionConsumer.accept(latestVersion);
     }
 }
