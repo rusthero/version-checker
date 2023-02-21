@@ -72,7 +72,7 @@ To use Version Checker, add my repository and the dependency.
 repositories {
     mavenCentral()
     maven {
-        url "https://rusthero.dev"
+        url 'https://rusthero.dev'
     }
 }
 
