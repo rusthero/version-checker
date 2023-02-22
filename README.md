@@ -14,7 +14,7 @@
     </a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
-    </a>     
+    </a>
     <a href="https://rusthero.dev/javadocs/version-checker/1.2.0">
         <img src="https://img.shields.io/badge/javadoc-v1.2.0-green"/>
     </a>
@@ -36,12 +36,10 @@
         <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=vulnerabilities"/>
     </a>
-    </a>
-        <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+    <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=code_smells"/>
     </a>
-    </a>
-        <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
+    <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=duplicated_lines_density"/>
     </a>
     <a href="https://discord.gg/5C6JgvmwUe">
