@@ -39,4 +39,18 @@ class UpdateTrackerTest {
         updateTracker.run();
         if (isOutdated.get() || isException.get()) fail();
     }
+
+    @Test
+    void runWithInvalidRepo() throws MalformedURLException {
+        GitHubVersionChecker versionChecker = new GitHubVersionChecker("rusthero", "this-repo-does-not-exist");
+        Version version = new Version("1.0.0");
+
+        AtomicBoolean isOutdated = new AtomicBoolean(false);
+        AtomicBoolean isException = new AtomicBoolean(false);
+        UpdateTracker updateTracker = new UpdateTracker(versionChecker, version,
+                                                        latestVersion -> isOutdated.set(true),
+                                                        exception -> isException.set(true));
+        updateTracker.run();
+        if (isOutdated.get() || !isException.get()) fail();
+    }
 }
