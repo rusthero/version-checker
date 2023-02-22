@@ -1,7 +1,7 @@
 <h1 align="center">
     <img src="https://user-images.githubusercontent.com/120267985/220111469-ba5b7bcb-6791-4f2e-b25f-f5523d6512f3.png" width=50%/>
     <br>
-    Version Checker   
+    VersionChecker   
 </h1>
 
 <h4 align="center">
