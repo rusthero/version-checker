@@ -16,9 +16,9 @@ import static java.lang.String.format;
 /**
  * A class that uses the GitHub API to check for the latest version of a specified repository. This class can be used
  * to determine whether a program is running on the latest version of the repository, and to retrieve information about
- * the latest version.
+ * the latest version. This class implements VersionChecker.
  */
-public class GitHubVersionChecker {
+public class GitHubVersionChecker implements VersionChecker {
     /**
      * The URL endpoint used by the GitHubVersionChecker instance to retrieve the latest version information from the
      * GitHub API. This URL is constructed using the owner and repo values provided in the constructor.
