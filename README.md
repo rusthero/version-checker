@@ -47,7 +47,7 @@
 <br>
 
 ## Usage
-We can easily get the version for latest release of this repository `version-checker` owned by me, `rusthero`.
+We can check if latest version of this repository `version-checker` owned by me, `rusthero` is 1.2.0:
 ```Java
 public static void main(String[] args) throws IOException, ReleaseOrRepoNotFoundException, RateLimitExceededException {
     Version currentVersion = new Version("1.2.0");
