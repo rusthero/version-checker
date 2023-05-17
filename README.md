@@ -42,9 +42,6 @@
     <a href="https://sonarcloud.io/summary/new_code?id=rusthero_version-checker">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=rusthero_version-checker&metric=duplicated_lines_density"/>
     </a>
-    <a href="https://discord.gg/5C6JgvmwUe">
-        <img src="https://img.shields.io/discord/1051165269709557813.svg?style=flat&color=7289DA&logo=Discord" alt="Discord"/>
-    </a>
 </p>  
 
 <br>
